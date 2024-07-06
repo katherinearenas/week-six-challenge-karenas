@@ -1,5 +1,10 @@
-const cityForecastEl = document.querySelector('#city-forecast');
+const cityForecastEl = document.getElementById('#city-forecast');
 const fetchButton = document.getElementById('fetch-button');
+
+function getCoordinates() {
+  let coordinates = 'http://api.openweathermap.org/geo/1.0/direct?q=chicago,il,us&limit=10&appid=a096090ef2291b9381ff1519ce80d339'
+  console.log(coordinates)
+}
 
 function getApi() {
   const requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=41.85003000&lon=-87.65005000&appid=a096090ef2291b9381ff1519ce80d339';
@@ -12,21 +17,29 @@ function getApi() {
       console.log(data);
       for (let i = 0; i < data.list.length; i++) {
         if (data.list[i].dt_txt.endsWith('12:00:00')){
-          const tempInFarehnheit = ((data.list[i].main.temp - 273.15)* 1.8) + 32
-            console.log("Temperature:" + tempInFarehnheit)
-        
-        const weatherCard = document.createElement('h3');
-        const temperature = document.createElement('p');
-        weatherCard.textContent = data.list[i].dt_txt;
+          const tempInF = ((data.list[i].main.temp - 273.15)* 1.8) + 32
+            console.log("Temperature: " + tempInF)
+          const wind = data.list[i].wind
+            console.log(wind)
+          const feelsLikeinF = ((data.list[i].main.feels_like)-273.15)* 1.8 + 32
+            console.log(feelsLikeinF)
+
+      
+        // const weatherCard = document.createElement('div');
+        // const weatherDate = document.createElement('<p>');
+        // const weatherTemperature = document.createElement('<p>'); 
+        // // const weather
+        // weatherDate.textContent = data.list[i].dt_txt;
         
         // weatherCard.textContent = data[i].city.name;
-        cityForecastEl.append(weatherCard);
+        
+        // cityForecastEl.appendChild(weatherCard)};
         }
         // issueContainer.append(issueTitle);
       }
     });
 }
-fetchButton.addEventListener('click', getApi);
+fetchButton.addEventListener('click', getApi, getCoordinates);
 
 // const getRepoName = function () {
 //   const queryString = document.location.search;
