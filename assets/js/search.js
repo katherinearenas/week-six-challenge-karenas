@@ -3,11 +3,12 @@ const fetchButton = document.getElementById('fetch-button');
 
 function getCoordinates() {
   let coordinates = 'http://api.openweathermap.org/geo/1.0/direct?q=chicago,il,us&limit=10&appid=a096090ef2291b9381ff1519ce80d339'
-  console.log(coordinates)
+  return coordinates;
 }
+console.log(getCoordinates())
 
 function getApi() {
-  const requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=41.85003000&lon=-87.65005000&appid=a096090ef2291b9381ff1519ce80d339';
+  const requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=41.85003000&lon=-87.65005000&appid=a096090ef2291b9381ff1519ce80d339&units=imperial';
 
   fetch(requestUrl)
     .then(function (response) {
@@ -17,14 +18,14 @@ function getApi() {
       console.log(data);
       for (let i = 0; i < data.list.length; i++) {
         if (data.list[i].dt_txt.endsWith('12:00:00')){
-          const tempInF = ((data.list[i].main.temp - 273.15)* 1.8) + 32;
-            console.log("Temperature: " + tempInF);
+          const tempInF = data.list[i].main.temp;
+            console.log("Temperature: " + tempInF + "°F");
           const windSpeed = data.list[i].wind.speed;
-            console.log("Wind: " + windSpeed);
-          const feelsLikeinF = ((data.list[i].main.feels_like)-273.15)* 1.8 + 32;
-            console.log("Feels Like: " + feelsLikeinF);
+            console.log("Wind: " + windSpeed + "mph");
+          const feelsLikeinF = data.list[i].main.feels_like;
+            console.log("Feels Like: " + feelsLikeinF + "°F");
           const humidity = data.list[i].main.humidity;
-            console.log(humidity);
+            console.log("Humidity: " + humidity + "%");
           const weatherIcon = data.list[i].weather.icon;
             console.log(weatherIcon);
 
