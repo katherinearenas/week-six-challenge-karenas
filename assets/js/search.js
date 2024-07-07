@@ -17,12 +17,17 @@ function getApi() {
       console.log(data);
       for (let i = 0; i < data.list.length; i++) {
         if (data.list[i].dt_txt.endsWith('12:00:00')){
-          const tempInF = ((data.list[i].main.temp - 273.15)* 1.8) + 32
-            console.log("Temperature: " + tempInF)
-          const wind = data.list[i].wind
-            console.log(wind)
-          const feelsLikeinF = ((data.list[i].main.feels_like)-273.15)* 1.8 + 32
-            console.log(feelsLikeinF)
+          const tempInF = ((data.list[i].main.temp - 273.15)* 1.8) + 32;
+            console.log("Temperature: " + tempInF);
+          const windSpeed = data.list[i].wind.speed;
+            console.log("Wind: " + windSpeed);
+          const feelsLikeinF = ((data.list[i].main.feels_like)-273.15)* 1.8 + 32;
+            console.log("Feels Like: " + feelsLikeinF);
+          const humidity = data.list[i].main.humidity;
+            console.log(humidity);
+          const weatherIcon = data.list[i].weather.icon;
+            console.log(weatherIcon);
+
 
       
         // const weatherCard = document.createElement('div');
