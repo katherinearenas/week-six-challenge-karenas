@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>The Five Day Forecast</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
   </head>
   <body>
   <section class="section">
@@ -17,6 +18,7 @@
       </p>
     </div>
   </section>
+  <aside class="left-container">
   <form class="field">
     <div class="title">Search for your Five Day Forecast</div>
     <div class="control">
@@ -27,19 +29,26 @@
         type="text"
         placeholder="Destination"/>
       </label>
-      <label class="label">
-        <input
-         id="state-name-input"
-         class="input is-normal"
-         type="text"
-         placeholder="State"/>
-       </label>
       <button id="fetch-button" class="button is-success" >
           Submit
       </button>
       </div>
   </form>
+  <div class="content is-normal">
+    <h1>Prior Searches</h1>
+    <ul id="past-searches">
+    </ul>
   </div>
+</aside>
+<main class="right-container">
+  <section class="current-weather">
+    
+  </section>
+  <section class="forecast">
+
+  </section>
+
+</main>
 <script src="./assets/js/search.js"></script>
   </body>
 </html>
