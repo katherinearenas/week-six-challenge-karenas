@@ -1,3 +1,6 @@
+#body-container{
+    margin: 5%;
+}
 #left-container{
     max-width: 25%;
    display: flexbox;
