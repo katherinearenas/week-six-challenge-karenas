@@ -20,7 +20,7 @@ This project is deployed using gitHub pages at https://katherinearenas.github.io
 
 These are some screenshots of the App.
 
-![Weather-Screenshot](weatherinput.png "City Input Screenshot")]]
+![Weather-Screenshot](weatherinput.png "City Input Screenshot")
 
 
-![Weather-Screenshot](weatheroutput.png "City Output Screenshot")]
+![Weather-Screenshot](weatheroutput.png "City Output Screenshot")
