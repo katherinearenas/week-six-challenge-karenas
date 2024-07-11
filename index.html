@@ -19,35 +19,33 @@
     </div>
   </section>
   <aside class="container is-one-quarter" id="left-container">
-  <form class="field">
+  <form class="field" id="inputForm">
     <div class="title">Search for your Five Day Forecast</div>
     <div class="control">
-      <label class="label">City
+      <label class="label" for="city-name-input">City</label>
        <input
         id="city-name-input"
         class="input is-normal"
         type="text"
         placeholder="Destination"/>
-      </label>
+      
       <button id="fetch-button" class="button is-success" >
           Submit
       </button>
       </div>
   </form>
   <div class="content is-normal">
-    <h1>Prior Searches</h1>
+    <h1 >Prior Searches</h1>
     <ul id="past-searches">
+      
     </ul>
   </div>
 </aside>
 <main class="container is-three-quarters" id="right-container">
-  <section class="current-weather">
-
+  <section class="current-weather" id="current-weather-container">
   </section>
-  <section class="forecast">
-
+  <section class="forecast" id="forecast">
   </section>
-
 </main>
 <script src="./assets/js/search.js"></script>
   </body>
