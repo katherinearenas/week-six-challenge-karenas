@@ -5,31 +5,6 @@ const pastSearchEl = document.getElementById('past-searches');
 let cityFromButton = document.querySelectorAll("city-btn")
 
 
-// let result;
-
-// // Get elements by ID
-// const cityInputEl = document.getElementById('city-name-input');
-// const fetchButton = document.getElementById('fetch-button');
-
-// // Get all elements with the class 'historyButton'
-// const historyButtons = document.querySelectorAll('.city-btn');
-
-// // Event listener for form submit
-// fetchButton.addEventListener('submit', function(event) {
-//     event.preventDefault(); // Prevent form submission
-//     result = userInput.value; // Get input value
-//     console.log("Result from input:", result); // Log result for testing
-// });
-
-// // Event listener for each history button click
-// historyButtons.forEach(function(button) {
-//     button.addEventListener('click', function() {
-//         result = button.textContent; // Get button text
-//         console.log("Result from history button:", result); // Log result for testing
-//     });
-// });
-
-
 function clearContainers(event) {
   event.preventDefault()
    const cWeather = document.getElementById('current-weather-container');
@@ -116,7 +91,12 @@ function getCurrentWeather(event) {
 function getApi(event) {
   event.preventDefault()
 
-  saveSearchHistory(cityForecastEl.value)
+  // if (result === cityInputEl) {
+  //   saveSearchHistory(cityForecastEl.value);
+  // } else if (result){
+  //   return result;
+  // }
+ 
 
  // https://api.openweathermap.org/data/2.5/weather?q=
 
@@ -173,10 +153,13 @@ function getApi(event) {
       })
     };
 
-
+// window.onload = function loadButtons()
+ 
 const searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || []
 console.log(searchHistory)
 
+// // function addbutton(event){
+//   event.preventDefault()
 for (let i = 0;  i < searchHistory.length; i++) {
     const allSearches = searchHistory[i];
     console.log(allSearches)
@@ -189,7 +172,7 @@ for (let i = 0;  i < searchHistory.length; i++) {
     cityNameEl.textContent = allSearches;
     // cityNameEl.addEventListener('click', searchFromHistory)
     pastSearchEl.appendChild(cityNameEl);
-    // cityButton = document.querySelector('.city-btn')
+    cityButton = document.querySelector('.city-btn')
     // cityButton.addEventListener('click', searchFromHistory(cityFromHistory))
 }
 
@@ -205,12 +188,7 @@ function saveSearchHistory(cityName) {
 }
 
 
-
-let searchCityHistory = JSON.parse(localStorage.getItem('searchHistory'))
-
-
-
-
+let searchCityHistory = JSON.parse(localStorage.getItem('searchHistory')) || []
 
 
 // fetchButton.addEventListener('click', function(event){
@@ -246,7 +224,7 @@ inputForm.addEventListener('submit', function(event) {
   result = cityInputEl.value; // Get input value
   console.log("Result from input:", result); // Log result for testing
   clearContainers(event)
-  
+  // saveSearchHistory(event)
   getCurrentWeather(event)
   getApi(event)
 });
@@ -254,7 +232,7 @@ inputForm.addEventListener('submit', function(event) {
 // Event listener for each history button click
 historyButtons.forEach(function(button) {
   button.addEventListener('click', function(event) {
-      event.preventDefault
+      event.preventDefault()
       result = button.textContent; // Get button text
       console.log("Result from history button:", result); // Log result for testing
       clearContainers(event)
