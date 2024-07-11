@@ -13,6 +13,14 @@ function clearContainers(event) {
   const forecast = document.getElementById('forecast');
   forecast.innerHTML = "";
   console.log("I'm running")
+
+  let cityNameEl = document.createElement('button');
+    // cityNameEl.setAttribute('id', 'output')
+    cityNameEl.classList.add( "city-btn", "button", "is-success")
+    cityNameEl.textContent = result;
+    // cityNameEl.addEventListener('click', searchFromHistory)
+    pastSearchEl.appendChild(cityNameEl);
+    cityButton = document.querySelector('.city-btn')
 }
 
 // if (){
@@ -50,6 +58,14 @@ function getCurrentWeather(event) {
   event.preventDefault()
   let getCurrentWeather = "https://api.openweathermap.org/data/2.5/weather?q=" + result + "&appid=9f096b9225d3366a0b3ad9b65fc340ac&units=imperial" 
 
+  // let cityNameEl = document.createElement('button');
+  // // cityNameEl.setAttribute('id', 'output')
+  // cityNameEl.classList.add( "city-btn", "button", "is-success")
+  // cityNameEl.textContent = allSearches;
+  // // cityNameEl.addEventListener('click', searchFromHistory)
+  // pastSearchEl.appendChild(cityNameEl);
+  // cityButton = document.querySelector('.city-btn')
+
   fetch(getCurrentWeather)
   .then(function (response) {
     return response.json();
@@ -61,7 +77,7 @@ function getCurrentWeather(event) {
         currentWeatherBanner.classList.add('card', 'has-text-centered')
         // currentWeatherBanner.setAttribute('id', weatherChild)
         const weatherBannerIcon = document.createElement('img');
-        const weatherBannerDate = document.createElement('h2');
+        const weatherBannerDate = document.createElement('h1');
         const weatherBannerHumidity = document.createElement('p');
         const weatherBannerTemperature = document.createElement('h1'); 
         const weatherBannerFeelsLike = document.createElement('p')
@@ -82,6 +98,8 @@ function getCurrentWeather(event) {
         currentWeatherBanner.appendChild(weatherBannerFeelsLike);
         currentWeatherBanner.appendChild(weatherBannerWind);
         document.getElementById('current-weather-container').appendChild(currentWeatherBanner)
+
+
  } }})
 
 }
@@ -149,6 +167,15 @@ function getApi(event) {
         weatherCard.appendChild(weatherHumidity);
         weatherCard.appendChild(weatherWind);
         document.querySelector(".forecast").appendChild(weatherCard)
+
+        // let cityNameEl = document.createElement('button');
+        // // cityNameEl.setAttribute('id', 'output')
+        // cityNameEl.classList.add( "city-btn", "button", "is-success");
+        // cityNameEl.textContent = result;
+        // // cityNameEl.addEventListener('click', searchFromHistory)
+        // pastSearchEl.appendChild(cityNameEl);
+        // cityButton = document.querySelector('.city-btn');
+
       };}
       })
     };
@@ -227,6 +254,15 @@ inputForm.addEventListener('submit', function(event) {
   // saveSearchHistory(event)
   getCurrentWeather(event)
   getApi(event)
+
+  let cityNameEl = document.createElement('button');
+    // cityNameEl.setAttribute('id', 'output')
+    cityNameEl.classList.add( "city-btn", "button", "is-success")
+    cityNameEl.textContent = result;
+    // cityNameEl.addEventListener('click', searchFromHistory)
+    pastSearchEl.appendChild(cityNameEl);
+    // cityButton = document.querySelector('.city-btn')
+
 });
 
 // Event listener for each history button click
