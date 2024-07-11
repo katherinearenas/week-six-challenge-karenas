@@ -83,7 +83,7 @@ function getCurrentWeather(event) {
     if (data){
       console.log(data)
       const currentWeatherBanner = document.createElement('div');
-        currentWeatherBanner.classList.add('card')
+        currentWeatherBanner.classList.add('card', 'has-text-centered')
         // currentWeatherBanner.setAttribute('id', weatherChild)
         const weatherBannerIcon = document.createElement('img');
         const weatherBannerDate = document.createElement('h2');
@@ -148,7 +148,7 @@ function getApi(event) {
 
       
         const weatherCard = document.createElement('div');
-        weatherCard.classList.add('card')
+        weatherCard.classList.add('card', 'column','is-one-fifth','has-text-centered')
         const weatherDate = document.createElement('h2');
         const weatherIcon = document.createElement('img');
         const weatherHumidity = document.createElement('p');
@@ -246,6 +246,7 @@ inputForm.addEventListener('submit', function(event) {
   result = cityInputEl.value; // Get input value
   console.log("Result from input:", result); // Log result for testing
   clearContainers(event)
+  
   getCurrentWeather(event)
   getApi(event)
 });
