@@ -103,7 +103,7 @@ function getFiveDayForecast(city) {
 					const weatherWind = document.createElement("p");
 					weatherDate.textContent = data.list[i].dt_txt;
 					weatherIcon.src =
-						"http://openweathermap.org/img/wn/" +
+						"https://openweathermap.org/img/wn/" +
 						data.list[i].weather[0].icon +
 						".png";
 					weatherTemperature.textContent = data.list[i].main.temp + "°";
@@ -162,7 +162,7 @@ document.querySelector("#past-searches").addEventListener("click", function (eve
 		getCurrentWeather(event.target.textContent);
 		getFiveDayForecast(event.target.textContent);
     saveSearchHistory(event.target.textContent);
-    renderHistoryButtons(event.target.textContent)
+    // renderHistoryButtons(event.target.textContent)
     // checkSearchHistory(event.target.textContent);
 	}
 });
@@ -194,26 +194,26 @@ inputForm.addEventListener("submit", function(event) {
 	// saveSearchHistory(event)
 	getCurrentWeather(city);
 	getFiveDayForecast(city);
-  saveSearchHistory(city);
-  // checkSearchHistory(city);
+  // saveSearchHistory(city);
+  // renderHistoryButtons();
+  checkSearchHistory(city);
   return;
 });
 
 
 
-// 	// check searchHistory to see if City is already there.
-//   function checkSearchHistory(cityToArray){
-//     let cityToArray = cityInputEl.value
-//     if (!searchHistory.includes(cityToArray)) {
-// //     console.log( cityToArray + "I'm here!!!!");
-//   searchHistory.push(cityToArray);
-//    renderHistoryButtons(cityToArray)
-//    saveSearchHistory(cityToArray)}};
-// // } else if (searchCityHistory.includes(city)){
-//   console.log("nope")
+	// check searchHistory to see if City is already there.
+  function checkSearchHistory(city){
+    if (!searchHistory.includes(city)) {
+//     console.log( cityToArray + "I'm here!!!!");
+    searchHistory.push(city);
+   renderHistoryButtons(city)
+   saveSearchHistory(city)}
+   else if (searchCityHistory.includes(city)){
+  console.log("nope") }};
 
 
-//     // If not, push it to end of history
-//     // save to local storage
-//     // renderHistoryButton()
+    // If not, push it to end of history
+    // save to local storage
+    // renderHistoryButton()
 
