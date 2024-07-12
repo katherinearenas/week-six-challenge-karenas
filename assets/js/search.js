@@ -7,35 +7,6 @@ function clearContainers() {
 	console.log("I'm running");
 }
 
-// if (){
-//   let cityForecastEl = cityInputEl;
-// } else {
-//   let cityForecastEl =
-
-// }
-
-// function getCity(event){
-//   event.preventDefault()
-//   const getCityName = cityForecastEl.value.trim;
-//   if (getCityName){
-//     return getCityName
-//   } else {
-//     let cityForecastEl = event.target.innerText;
-//   getCurrentWeather(event);
-//   getApi(event);
-// // //   console.log("I'm Working");
-//   }
-// }
-
-// function searchFromHistory(cityFromHistory, event) {
-//   event.preventDefault()
-//   let cityFromHistory = event.target.innerText;
-//   // getCurrentWeather(event);
-//   // getApi(event);
-//   console.log("I'm Working");
-// }
-
-// const weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityForecastEl.value + "&appid=aedff6b19ebb0a704cc38341604b8fc8&units=imperial"
 
 function getCurrentWeather(city) {
 	let getCurrentWeather =
@@ -43,13 +14,6 @@ function getCurrentWeather(city) {
 		city +
 		"&appid=9f096b9225d3366a0b3ad9b65fc340ac&units=imperial";
 
-	// let cityNameEl = document.createElement('button');
-	// // cityNameEl.setAttribute('id', 'output')
-	// cityNameEl.classList.add( "city-btn", "button", "is-success")
-	// cityNameEl.textContent = allSearches;
-	// // cityNameEl.addEventListener('click', searchFromHistory)
-	// pastSearchEl.appendChild(cityNameEl);
-	// cityButton = document.querySelector('.city-btn')
 
 	fetch(getCurrentWeather)
 		.then(function (response) {
@@ -97,23 +61,12 @@ function getCurrentWeather(city) {
 }
 
 function getFiveDayForecast(city) {
-	// if (result === cityInputEl) {
-	//   saveSearchHistory(cityForecastEl.value);
-	// } else if (result){
-	//   return result;
-	// }
-
-	// https://api.openweathermap.org/data/2.5/weather?q=
-
-	//  if (cityInputEl) {
+	
 	const requestUrl =
 		"https://api.openweathermap.org/data/2.5/forecast?q=" +
 		city +
 		"&appid=9f096b9225d3366a0b3ad9b65fc340ac&units=imperial";
-	//  else if
-	//  "https://api.openweathermap.org/data/2.5/forecast?q=" + cityFromHistory + "&appid=9f096b9225d3366a0b3ad9b65fc340ac&units=imperial" ;
-	// const requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=41.85003000&lon=-87.65005000&appid=a096090ef2291b9381ff1519ce80d339&units=imperial';
-
+	
 	fetch(requestUrl)
 		.then(function (response) {
 			return response.json();
@@ -148,7 +101,6 @@ function getFiveDayForecast(city) {
 					const weatherTemperature = document.createElement("h1");
 					const weatherFeelsLike = document.createElement("p");
 					const weatherWind = document.createElement("p");
-					// const weather
 					weatherDate.textContent = data.list[i].dt_txt;
 					weatherIcon.src =
 						"http://openweathermap.org/img/wn/" +
@@ -168,19 +120,12 @@ function getFiveDayForecast(city) {
 					weatherCard.appendChild(weatherWind);
 					document.querySelector(".forecast").appendChild(weatherCard);
 
-					// let cityNameEl = document.createElement('button');
-					// // cityNameEl.setAttribute('id', 'output')
-					// cityNameEl.classList.add( "city-btn", "button", "is-success");
-					// cityNameEl.textContent = result;
-					// // cityNameEl.addEventListener('click', searchFromHistory)
-					// pastSearchEl.appendChild(cityNameEl);
-					// cityButton = document.querySelector('.city-btn');
 				}
 			}
 		});
 }
 
-// window.onload = function loadButtons()
+
 
 const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 console.log(searchHistory);
@@ -189,22 +134,20 @@ renderHistoryButtons();
 function renderHistoryButtons() {
 	const pastSearchEl = document.querySelector("#past-searches");
   pastSearchEl.innerHTML = "";
-	// // function addbutton(event){
-	//   event.preventDefault()
+
 	for (let i = 0; i < searchHistory.length; i++) {
 		const allSearches = searchHistory[i];
 		console.log(allSearches);
-		// let allPostsEL = document.createElement('section')
-		// document.querySelector(".inputcard").appendChild(allPostsEl)
+		
 
 		let cityNameEl = document.createElement("button");
-		// cityNameEl.setAttribute('id', 'output')
+	
 		cityNameEl.classList.add("city-btn", "button", "is-success");
 		cityNameEl.textContent = allSearches;
-		// cityNameEl.addEventListener('click', searchFromHistory)
+		
 		pastSearchEl.appendChild(cityNameEl);
 		cityButton = document.querySelector(".city-btn");
-		// cityButton.addEventListener('click', searchFromHistory(cityFromHistory))
+		
 	}
 }
 
@@ -225,54 +168,23 @@ function saveSearchHistory(cityName) {
 
 let searchCityHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 
-// fetchButton.addEventListener('click', function(event){
 
-//   event.preventDefault;
-//   // storeCity(event);
-//   // clearContainers(event);
-//   // setTimeout (function(){
-//   getCurrentWeather(event);
-//   getApi(event)
-// // })})
-//     return
-// })
 
-// function displayWeatherFromHistory(event){
-// let cityFromHistory =
-
-// }
 const inputForm = document.getElementById("inputForm");
 const cityInputEl = document.getElementById("city-name-input");
 const submitButton = document.getElementById("fetch-button");
 
-// Get all elements with the class 'historyButton'
+
 const historyButtons = document.querySelectorAll(".city-btn");
 
-// Event listener for form submit
 inputForm.addEventListener("submit", function (event) {
-	event.preventDefault(); // Prevent form submission
-	let city = cityInputEl.value; // Get input value
-	console.log("Result from input:", city); // Log result for testing
+	event.preventDefault(); 
+	let city = cityInputEl.value; // 
+	console.log("Result from input:", city); 
 	clearContainers(event);
-	// saveSearchHistory(event)
+
 	getCurrentWeather(city);
 	getFiveDayForecast(city);
 
-	// check searchHistory to see if City is already there.
-
-    // If not, push it to end of history
-    // save to local storage
-    // renderHistoryButton()
 });
 
-// Event listener for each history button click
-// historyButtons.forEach(function(button) {
-//   button.addEventListener('click', function(event) {
-//       event.preventDefault()
-//       result = button.textContent; // Get button text
-//       console.log("Result from history button:", result); // Log result for testing
-//       clearContainers(event)
-//       getCurrentWeather(event)
-//       getApi(event)
-//     });
-// });
