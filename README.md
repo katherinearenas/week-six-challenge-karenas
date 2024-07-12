@@ -23,7 +23,7 @@ These are some screenshots of the App.
 
 ![Weather-Screenshot](screenshot1.png "City Input Screenshot")
 
-![Weather-Screenshot](screenshot2.png "City Button output Screenshot")
+![Weather-Screenshot](Screenshot2.png "City Button output Screenshot")
 
 
 ![Weather-Screenshot](screenshot3.png "City Output Screenshot")
