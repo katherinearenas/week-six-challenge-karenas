@@ -22,10 +22,9 @@ function getCurrentWeather(city) {
 		.then(function (data) {
 			{
 				if (data) {
-					console.log(data);
+					// console.log(data);
 					const currentWeatherBanner = document.createElement("div");
 					currentWeatherBanner.classList.add("card", "has-text-centered");
-					// currentWeatherBanner.setAttribute('id', weatherChild)
 					const weatherBannerIcon = document.createElement("img");
 					const weatherBannerDate = document.createElement("h1");
 					const weatherBannerHumidity = document.createElement("p");
@@ -72,7 +71,7 @@ function getFiveDayForecast(city) {
 			return response.json();
 		})
 		.then(function (data) {
-			console.log(data);
+			// console.log(data);
 			for (let i = 0; i < data.list.length; i++) {
 				if (data.list[i].dt_txt.endsWith("12:00:00")) {
 					const icon =
@@ -80,13 +79,13 @@ function getFiveDayForecast(city) {
 						data.list[i].weather[0].icon +
 						".png";
 					const tempInF = data.list[i].main.temp;
-					console.log("Temperature: " + tempInF + "°F");
+					// console.log("Temperature: " + tempInF + "°F");
 					const windSpeed = data.list[i].wind.speed;
-					console.log("Wind: " + windSpeed + "mph");
+					// console.log("Wind: " + windSpeed + "mph");
 					const feelsLikeinF = data.list[i].main.feels_like;
-					console.log("Feels Like: " + feelsLikeinF + "°F");
+					// console.log("Feels Like: " + feelsLikeinF + "°F");
 					const humidity = data.list[i].main.humidity;
-					console.log("Humidity: " + humidity + "%");
+					// console.log("Humidity: " + humidity + "%");
 
 					const weatherCard = document.createElement("div");
 					weatherCard.classList.add(
@@ -161,7 +160,7 @@ document.querySelector("#past-searches").addEventListener("click", function (eve
 		clearContainers();
 		getCurrentWeather(event.target.textContent);
 		getFiveDayForecast(event.target.textContent);
-    saveSearchHistory(event.target.textContent);
+    // saveSearchHistory(event.target.textContent);
     
 	}
 });
@@ -201,7 +200,7 @@ inputForm.addEventListener("submit", function(event) {
 	// check searchHistory to see if City is already there.
   function checkSearchHistory(city){
     if (!searchHistory.includes(city)) {
-
+      console.log("added to history")
     searchHistory.push(city);
    renderHistoryButtons(city)
    saveSearchHistory(city)}
