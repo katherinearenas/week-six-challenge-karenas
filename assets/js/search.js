@@ -136,7 +136,7 @@ renderHistoryButtons();
 
 function renderHistoryButtons() {
 	const pastSearchEl = document.querySelector("#past-searches");
-  // pastSearchEl.innerHTML = "";
+  pastSearchEl.innerHTML = "";
 
 	for (let i = 0; i < searchHistory.length; i++) {
 		const allSearches = searchHistory[i];
@@ -161,6 +161,8 @@ document.querySelector("#past-searches").addEventListener("click", function (eve
 		clearContainers();
 		getCurrentWeather(event.target.textContent);
 		getFiveDayForecast(event.target.textContent);
+    saveSearchHistory(event.target.textContent);
+    renderHistoryButtons(event.target.textContent)
     // checkSearchHistory(event.target.textContent);
 	}
 });
@@ -171,7 +173,7 @@ function saveSearchHistory(city) {
 	localStorage.setItem("searchHistory", JSON.stringify(searchHistory)); 
 }
 
-// let searchCityHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+let searchCityHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 
 
 
@@ -184,7 +186,7 @@ const submitButton = document.getElementById("fetch-button");
 const historyButtons = document.querySelectorAll(".city-btn");
 
 // Event listener for form submit
-submitButton.addEventListener("click", function(event) {
+inputForm.addEventListener("submit", function(event) {
 	event.preventDefault(); // Prevent form submission
 	let city = cityInputEl.value; // Get input value
 	console.log("Result from input:", city); // Log result for testing
@@ -194,19 +196,19 @@ submitButton.addEventListener("click", function(event) {
 	getFiveDayForecast(city);
   saveSearchHistory(city);
   // checkSearchHistory(city);
-  return ;
+  return;
 });
 
 
 
-	// check searchHistory to see if City is already there.
-  function checkSearchHistory(searchHistory){
-    let cityToArray = cityInputEl.value
-    if (!searchHistory.includes(cityToArray)) {
-//     console.log( cityToArray + "I'm here!!!!");
-  searchHistory.push(cityToArray);
-   renderHistoryButtons(cityToArray)
-   saveSearchHistory(cityToArray)}};
+// 	// check searchHistory to see if City is already there.
+//   function checkSearchHistory(cityToArray){
+//     let cityToArray = cityInputEl.value
+//     if (!searchHistory.includes(cityToArray)) {
+// //     console.log( cityToArray + "I'm here!!!!");
+//   searchHistory.push(cityToArray);
+//    renderHistoryButtons(cityToArray)
+//    saveSearchHistory(cityToArray)}};
 // // } else if (searchCityHistory.includes(city)){
 //   console.log("nope")
 
