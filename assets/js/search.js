@@ -162,8 +162,7 @@ document.querySelector("#past-searches").addEventListener("click", function (eve
 		getCurrentWeather(event.target.textContent);
 		getFiveDayForecast(event.target.textContent);
     saveSearchHistory(event.target.textContent);
-    // renderHistoryButtons(event.target.textContent)
-    // checkSearchHistory(event.target.textContent);
+    
 	}
 });
 
@@ -191,11 +190,8 @@ inputForm.addEventListener("submit", function(event) {
 	let city = cityInputEl.value; // Get input value
 	console.log("Result from input:", city); // Log result for testing
 	clearContainers();
-	// saveSearchHistory(event)
 	getCurrentWeather(city);
 	getFiveDayForecast(city);
-  // saveSearchHistory(city);
-  // renderHistoryButtons();
   checkSearchHistory(city);
   return;
 });
@@ -205,7 +201,7 @@ inputForm.addEventListener("submit", function(event) {
 	// check searchHistory to see if City is already there.
   function checkSearchHistory(city){
     if (!searchHistory.includes(city)) {
-//     console.log( cityToArray + "I'm here!!!!");
+
     searchHistory.push(city);
    renderHistoryButtons(city)
    saveSearchHistory(city)}
