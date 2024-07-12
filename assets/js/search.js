@@ -62,7 +62,7 @@ function getCurrentWeather(city) {
 function getFiveDayForecast(city) {
 	
 	const requestUrl =
-		"http://api.openweathermap.org/data/2.5/forecast?q=" +
+		"https://api.openweathermap.org/data/2.5/forecast?q=" +
 		city +
 		"&appid=9f096b9225d3366a0b3ad9b65fc340ac&units=imperial";
 	
