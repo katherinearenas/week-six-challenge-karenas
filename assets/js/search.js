@@ -196,7 +196,7 @@ document.querySelector("#past-searches").addEventListener("click", function (eve
 		clearContainers();
 		getCurrentWeather(event.target.textContent);
 		getFiveDayForecast(event.target.textContent);
-    searchCityHistory(event.target.textContent)
+    checkSearchHistory(event.target.textContent)
 	}
 });
 
@@ -219,26 +219,26 @@ const submitButton = document.getElementById("fetch-button");
 const historyButtons = document.querySelectorAll(".city-btn");
 
 // Event listener for form submit
-inputForm.addEventListener("submit"), function (event){
+submitButton.addEventListener("click", function(event) {
 	event.preventDefault(); // Prevent form submission
 	let city = cityInputEl.value; // Get input value
 	console.log("Result from input:", city); // Log result for testing
-	clearContainers(event);
+	clearContainers();
 	// saveSearchHistory(event)
 	getCurrentWeather(city);
 	getFiveDayForecast(city);
   checkSearchHistory(city);
-};
+});
 
 	// check searchHistory to see if City is already there.
   function checkSearchHistory(city){
-if (searchCityHistory.includes(city)) {
-  console.log("don't add me")
-} else {
+if (!searchCityHistory.includes(city)) {
+  console.log(city +"I'm here!!!!")
 searchCityHistory.push(city),
-saveSearchHistory(city)}
-    // If not, push it to end of history
-    // save to local storage
-    // renderHistoryButton()
-};
-
+  saveSearchHistory()}}
+// } else if (searchCityHistory.includes(city)){
+//   console.log("nope")
+//     // If not, push it to end of history
+//     // save to local storage
+//     // renderHistoryButton()
+// };
