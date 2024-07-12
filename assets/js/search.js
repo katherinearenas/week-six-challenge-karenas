@@ -7,35 +7,6 @@ function clearContainers() {
 	console.log("I'm running");
 }
 
-// if (){
-//   let cityForecastEl = cityInputEl;
-// } else {
-//   let cityForecastEl =
-
-// }
-
-// function getCity(event){
-//   event.preventDefault()
-//   const getCityName = cityForecastEl.value.trim;
-//   if (getCityName){
-//     return getCityName
-//   } else {
-//     let cityForecastEl = event.target.innerText;
-//   getCurrentWeather(event);
-//   getApi(event);
-// // //   console.log("I'm Working");
-//   }
-// }
-
-// function searchFromHistory(cityFromHistory, event) {
-//   event.preventDefault()
-//   let cityFromHistory = event.target.innerText;
-//   // getCurrentWeather(event);
-//   // getApi(event);
-//   console.log("I'm Working");
-// }
-
-// const weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityForecastEl.value + "&appid=aedff6b19ebb0a704cc38341604b8fc8&units=imperial"
 
 function getCurrentWeather(city) {
 	let getCurrentWeather =
@@ -43,13 +14,6 @@ function getCurrentWeather(city) {
 		city +
 		"&appid=9f096b9225d3366a0b3ad9b65fc340ac&units=imperial";
 
-	// let cityNameEl = document.createElement('button');
-	// // cityNameEl.setAttribute('id', 'output')
-	// cityNameEl.classList.add( "city-btn", "button", "is-success")
-	// cityNameEl.textContent = allSearches;
-	// // cityNameEl.addEventListener('click', searchFromHistory)
-	// pastSearchEl.appendChild(cityNameEl);
-	// cityButton = document.querySelector('.city-btn')
 
 	fetch(getCurrentWeather)
 		.then(function (response) {
@@ -172,7 +136,7 @@ renderHistoryButtons();
 
 function renderHistoryButtons() {
 	const pastSearchEl = document.querySelector("#past-searches");
-  pastSearchEl.innerHTML = "";
+  // pastSearchEl.innerHTML = "";
 
 	for (let i = 0; i < searchHistory.length; i++) {
 		const allSearches = searchHistory[i];
@@ -191,22 +155,23 @@ function renderHistoryButtons() {
 }
 
 document.querySelector("#past-searches").addEventListener("click", function (event) {
+  event.preventDefault()
 	if (event.target.matches(".city-btn")) {
 		console.log("CITY BUTTON", event.target.textContent);
 		clearContainers();
 		getCurrentWeather(event.target.textContent);
 		getFiveDayForecast(event.target.textContent);
-    checkSearchHistory(event.target.textContent)
+    // checkSearchHistory(event.target.textContent);
 	}
 });
 
 function saveSearchHistory(city) {
 	const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 	searchHistory.push(city);
-	localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+	localStorage.setItem("searchHistory", JSON.stringify(searchHistory)); 
 }
 
-let searchCityHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+// let searchCityHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 
 
 
@@ -227,18 +192,26 @@ submitButton.addEventListener("click", function(event) {
 	// saveSearchHistory(event)
 	getCurrentWeather(city);
 	getFiveDayForecast(city);
-  checkSearchHistory(city);
+  saveSearchHistory(city);
+  // checkSearchHistory(city);
+  return ;
 });
 
+
+
 	// check searchHistory to see if City is already there.
-  function checkSearchHistory(city){
-if (!searchCityHistory.includes(city)) {
-  console.log(city +"I'm here!!!!")
-searchCityHistory.push(city),
-  saveSearchHistory()}}
-// } else if (searchCityHistory.includes(city)){
+  function checkSearchHistory(searchHistory){
+    let cityToArray = cityInputEl.value
+    if (!searchHistory.includes(cityToArray)) {
+//     console.log( cityToArray + "I'm here!!!!");
+  searchHistory.push(cityToArray);
+   renderHistoryButtons(cityToArray)
+   saveSearchHistory(cityToArray)}};
+// // } else if (searchCityHistory.includes(city)){
 //   console.log("nope")
+
+
 //     // If not, push it to end of history
 //     // save to local storage
 //     // renderHistoryButton()
-// };
+
