@@ -34,7 +34,7 @@ function getCurrentWeather(city) {
 
 					weatherBannerDate.textContent = "Current Weather in " + data.name;
 					weatherBannerIcon.src =
-						"https://openweathermap.org/img/wn/" +
+						"http://openweathermap.org/img/wn/" +
 						data.weather[0].icon +
 						"@2x.png";
 					data.weather[0].icon;
@@ -62,7 +62,7 @@ function getCurrentWeather(city) {
 function getFiveDayForecast(city) {
 	
 	const requestUrl =
-		"https://api.openweathermap.org/data/2.5/forecast?q=" +
+		"http://api.openweathermap.org/data/2.5/forecast?q=" +
 		city +
 		"&appid=9f096b9225d3366a0b3ad9b65fc340ac&units=imperial";
 	
@@ -75,7 +75,7 @@ function getFiveDayForecast(city) {
 			for (let i = 0; i < data.list.length; i++) {
 				if (data.list[i].dt_txt.endsWith("12:00:00")) {
 					const icon =
-						"https://openweathermap.org/img/wn/" +
+						"http://openweathermap.org/img/wn/" +
 						data.list[i].weather[0].icon +
 						".png";
 					const tempInF = data.list[i].main.temp;
@@ -102,7 +102,7 @@ function getFiveDayForecast(city) {
 					const weatherWind = document.createElement("p");
 					weatherDate.textContent = data.list[i].dt_txt;
 					weatherIcon.src =
-						"https://openweathermap.org/img/wn/" +
+						"http://openweathermap.org/img/wn/" +
 						data.list[i].weather[0].icon +
 						".png";
 					weatherTemperature.textContent = data.list[i].main.temp + "°";
